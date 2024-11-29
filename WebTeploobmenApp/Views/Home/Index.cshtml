@@ -1,0 +1,86 @@
+﻿
+<div class="text-center">
+    <form action="/home/calculator" method="post">
+        <div class="d-flex flex-wrap justify-content-center">
+            <!-- Первый столбец -->
+            <div class="col-6 p-2">
+                <div class="mb-3">
+                    <label for="visotasloy" class="form-label">Высота слоя, м</label>
+                    <input type="text" name="model.visotasloy" class="form-control" id="visotasloy" rows="1" />
+                </div>
+                <div class="mb-3">
+                    <label for="nachtempmaterial" class="form-label">Начальная температура материала, °C</label>
+                    <input type="text" name="model.nachtempmaterial" class="form-control" id="nachtempmaterial" rows="1" />
+                </div>
+                <div class="mb-3">
+                    <label for="nachtempgas" class="form-label">Начальная температура газа, °C</label>
+                        <input type="text" name="model.nachtempgas" class="form-control" id="nachtempgas" rows="1" />
+                </div>
+                <div class="mb-3">
+                    <label for="skorostgas" class="form-label">Скорость газа на свободное сечение шихты, м/с</label>
+                    <input type="text" name="model.skorostgas" class="form-control" rows="1" id="skorostgas" />
+                </div>
+                <div class="mb-3">
+                    <label for="sredtemplogas" class="form-label">Средняя теплоемкость газа, кДж/(м3 • К)</label>
+                    <input type="text" name="model.sredtemplogas" class="form-control" id="sredtemplogas" rows="1" />
+                </div>
+                <div class="mb-3">
+                    <select name="model.operationType" class="form-select">
+                        <option value="1">Температура материала</option>
+                        <option value="2">Температура газа</option>
+                        <option value="3">Разность температур</option>
+                        <option value="4">Все данные</option>
+                    </select>
+                </div>
+
+            </div>
+            <!-- Второй столбец -->
+           <div class="col-6 p-2">
+                <div class="mb-3">
+                    <label for="rashodmaterial" class="form-label">Расход материалов</label>
+                    <input type="text" name="model.rashodmaterial" class="form-control"  id="rashodmaterial" rows="1" />
+                </div>
+                <div class="mb-3">
+                    <label for="teploemmaterial" class="form-label">Теплоемкость материалов, кДж/(кг • К)</label>
+                    <input type="text" name="model.teploemmaterial" class="form-control"  id="teploemmaterial" rows="1" />
+                </div>
+                <div class="mb-3">
+                    <label for="kofteplo" class="form-label">Объемный коэффициент теплоотдачи, Вт/(м3 • К)</label>
+                    <input type="text" name="model.kofteplo" id="kofteplo" class="form-control" rows="1" />
+                </div>
+                <div class="mb-3">
+                    <label for="diametrapparata" class="form-label">Диаметр аппарата, м</label>
+                    <input type="text" name="model.diametrapparata" class="form-control" id="diametrapparata" rows="1" />
+                </div>
+                <div class="mb-3">
+                    <label for="ycoordinate" class="form-label">На высоте, м</label>
+                    <input type="text" name="model.ycoordinate" class="form-control"  id="ycoordinate" rows="1" />
+                </div>
+                <button class="btn btn-primary">Рассчитать</button>
+            </div>
+        </div>
+      
+        <div class="d-flex flex-wrap justify-content-center">
+
+        </div>
+       
+       
+       
+    </form>
+</div>
+
+<style>
+   .form-label {
+    font-weight: bold;
+    text-align: left; /* Устанавливает выравнивание по левому краю */
+    display: block;   /* Убедитесь, что label занимает всю строку */
+}
+
+    .form-control, .form-select, button {
+        width: 100%;
+    }
+
+    .col-6 {
+        max-width: 50%;
+    }
+</style>

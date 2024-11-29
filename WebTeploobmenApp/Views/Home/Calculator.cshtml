@@ -1,0 +1,15 @@
+﻿@model HomeCalcViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+ <div>
+    <label class=" form-label"> @Model.OperationTypeName </label> <br />
+    Результат расчета: @Model.Result при
+    диаметре аппарата @Model.Diametrapparata м
+ </div>
+<style>
+    .form-label {
+        font-weight: bold;
+    
+    }
+ </style >
