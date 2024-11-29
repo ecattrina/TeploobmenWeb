@@ -24,11 +24,33 @@ namespace WebTeploobmenApp.Controllers
 			ploshadechen = Math.PI * Math.Pow(model.Diametrapparata, 2) / 4;
 			teploempotmaterial = model.Rashodmaterial * model.Teploemmaterial;
 			teploempotgas = ploshadechen * model.Skorostgas * model.Sredtemplogas;
-			otnoshteploem = teploempotgas / teploempotgas;
+			otnoshteploem = teploempotmaterial / teploempotgas;
 			polnayaontositvisota = (model.Visotasloy * model.Kofteplo) / (model.Skorostgas * model.Sredtemplogas * 1000);
 
-			double Y = 
+			 double Y(double Ycoordinate, double Visotasloy, double Skorostgas, double Sredtemplogas)
+			{
+				double result = (Visotasloy * Ycoordinate) / (Skorostgas * Sredtemplogas * 1000);
+				return(result);
+				
+			}
+			double y = Y(model.Ycoordinate, model.Visotasloy, model.Skorostgas, model.Sredtemplogas);
+			
+				
+			double Exp1(double otnoshteploem, double y)
+				{
+				double result = 1 - Math.Exp(((otnoshteploem-1) * y) / otnoshteploem);
+				
+				return(result); }
 
+			double exp1 = Exp1(otnoshteploem, y);
+
+			double Mexp1(double otnoshteploem, double Y)
+            {
+                double result = (1 - otnoshteploem*Math.Exp((otnoshteploem-1) * Y) / otnoshteploem);
+
+                return (result);
+            }
+            double mexp1 = Mexp1(otnoshteploem, y);
             var result = model.OperationType switch
 			{
 
