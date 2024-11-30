@@ -32,6 +32,12 @@
             _ => ""
         };
         public double Result {  get; set; }
-        
+
+        public double Ploshadechen { get; set; }
+        public double TeploemMaterial { get; set; }
+        public double TeploemGas { get; set; }
+        public double OtnoshTeploem { get; set; }
+        public double PolnayaOtnositVisota { get; set; }
+
     }
 }
