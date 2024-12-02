@@ -13,34 +13,50 @@
 @{
     ViewData["Title"] = "Calculator";
 }
-
 @if (Model?.Results != null && Model.Results.Any())
 {
     <div>
         <label class="form-label">Результаты:</label>
-        <table class="table table-bordered">
+        <table class="table table-bordered" style="width: 100%; text-align: center;">
             <thead>
                 <tr>
-                    <th>Высота, м</th>
-                    <th>Температура материала, °C</th>
-                    <th>Температура газа, °C</th>
-                    <th>Разность температур, °C</th>
+                    <th style="width: 20%;">Параметры</th>
+                    @foreach (var result in Model.Results)
+                    {
+                        <th style="width: @(80 / Model.Results.Count())%;">@result.Ycoordinate м</th>
+                    }
                 </tr>
             </thead>
             <tbody>
-                @foreach (var result in Model.Results)
-                {
-                    <tr>
-                        <td>@result.Ycoordinate</td>
-                        <td>@result.TemperatureMaterial</td>
+                <tr>
+                    <td>Температура газа, °C</td>
+                    @foreach (var result in Model.Results)
+                    {
                         <td>@result.TemperatureGas</td>
+                    }
+                </tr>
+                <tr>
+                    <td>Температура материала, °C</td>
+                    @foreach (var result in Model.Results)
+                    {
+                        <td>@result.TemperatureMaterial</td>
+                    }
+                </tr>
+                <tr>
+                    <td>Разность температур, °C</td>
+                    @foreach (var result in Model.Results)
+                    {
                         <td>@result.TemperatureDifference</td>
-                    </tr>
-                }
+                    }
+                </tr>
             </tbody>
         </table>
     </div>
 }
+
+
+
+
 
 
  
