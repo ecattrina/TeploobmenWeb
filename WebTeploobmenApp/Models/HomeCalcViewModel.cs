@@ -2,25 +2,25 @@
 {
     public class HomeCalcViewModel
     {
-        public double Visotasloy { get; set; }
+        public double? Visotasloy { get; set; }
 
-        public double Nachtempgas { get; set; }
+        public double?   Nachtempgas { get; set; }
 
-        public double Nachtempmaterial { get; set; }
+        public double? Nachtempmaterial { get; set; }
 
-        public double Skorostgas { get; set; }
+        public double? Skorostgas { get; set; }
 
-        public double Sredtemplogas { get; set; }
+        public double? Sredtemplogas { get; set; }
 
-        public double Rashodmaterial { get; set; }
+        public double? Rashodmaterial { get; set; }
 
-        public double Teploemmaterial { get; set; }
+        public double? Teploemmaterial { get; set; }
 
-        public double Kofteplo { get; set; }
+        public double? Kofteplo { get; set; }
 
-        public double Diametrapparata { get; set; }
+        public double? Diametrapparata { get; set; }
 
-        public double Ycoordinate { get; set; }
+        public double?  Ycoordinate { get; set; }
 
         public int OperationType { get; set; }
         public string OperationTypeName => OperationType switch
@@ -31,13 +31,24 @@
             4 => "Таблица",
             _ => ""
         };
-        public double Result {  get; set; }
+        public double? Result {  get; set; }
 
-        public double Ploshadechen { get; set; }
-        public double TeploemMaterial { get; set; }
-        public double TeploemGas { get; set; }
-        public double OtnoshTeploem { get; set; }
-        public double PolnayaOtnositVisota { get; set; }
+        public double? Ploshadechen { get; set; }
+        public double? TeploemMaterial { get; set; }
+        public double? TeploemGas { get; set; }
+        public double? OtnoshTeploem { get; set; }
+        public double? PolnayaOtnositVisota { get; set; }
 
-    }
+
+        public double? theta {  get; set; }
+
+        public double? upsilon {  get; set; }
+
+        public double? t {  get; set; }
+        public double? T {  get; set; }
+
+        public double? mexp1 { get; set; }
+
+        public double? rasnost {  get; set; }
+            }
 }

@@ -1,3 +1,8 @@
+
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Sqlite;
+using WebTeploobmenApp.Data;
+
 namespace WebTeploobmenApp
 {
 	public class Program
@@ -9,6 +14,7 @@ namespace WebTeploobmenApp
 			// Add services to the container.
 			builder.Services.AddControllersWithViews();
 
+			builder.Services.AddDbContext<TeploobmenContext>(o => o.UseSqlite("Data Source=Teploobmen.db;"));
 			var app = builder.Build();
 
 			// Configure the HTTP request pipeline.

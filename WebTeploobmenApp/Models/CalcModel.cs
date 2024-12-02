@@ -41,7 +41,7 @@
             (Visotasloy * Kofteplo) / (Skorostgas * Sredtemplogas * 1000);
 
         public double CalculateY() =>
-            (Visotasloy * Ycoordinate) / (Skorostgas * Sredtemplogas * 1000);
+            ( Kofteplo * Ycoordinate) / (Skorostgas * Sredtemplogas * 1000);
 
         public double Exp1() =>
         1 - Math.Exp(((OtnoshTeploem() - 1) * CalculateY()) / OtnoshTeploem());
@@ -49,17 +49,14 @@
         public double Mexp1() =>
        (1 - OtnoshTeploem() * Math.Exp(((OtnoshTeploem() - 1) * CalculateY()) / OtnoshTeploem()));
 
+        public double upsilon() =>
+            Exp1() / (1 - OtnoshTeploem() * Math.Exp(((OtnoshTeploem() - 1) * (Kofteplo * Visotasloy) / (Skorostgas * Sredtemplogas * 1000)) / OtnoshTeploem()));
+        public double theta() => Mexp1() / (1 - OtnoshTeploem() * Math.Exp(((OtnoshTeploem() - 1) * (Kofteplo * Visotasloy) / (Skorostgas * Sredtemplogas * 1000)) / OtnoshTeploem()));
+        public double t() => Nachtempmaterial + (Nachtempgas-Nachtempmaterial)*upsilon();
+
+        public double T() => Nachtempmaterial + (Nachtempgas - Nachtempmaterial) * theta();
 
 
-
-
-        //         teploempotmaterial, teploempotgas, otnoshteploem, polnayaontositvisota;
-
-        //     ploshadechen = Math.PI* Math.Pow(model.Diametrapparata, 2) / 4;
-        //teploempotmaterial = model.Rashodmaterial* model.Teploemmaterial;
-        //     teploempotgas = ploshadechen* model.Skorostgas * model.Sredtemplogas;
-        //     otnoshteploem = teploempotmaterial / teploempotgas;
-        //polnayaontositvisota = (model.Visotasloy* model.Kofteplo) / (model.Skorostgas* model.Sredtemplogas* 1000);
 
 
     }
