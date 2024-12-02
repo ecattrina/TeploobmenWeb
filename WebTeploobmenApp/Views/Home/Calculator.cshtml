@@ -1,14 +1,47 @@
 ﻿@model HomeCalcViewModel
-@{
+@* @{
     ViewData["Title"] = "Home Page";
 }
-@if (Model != null )
+ @if (Model != null )
 {
      <div>
         <label class=" form-label">" Результат"</label> <br />
         Температура материала: @Model.t <br /> Температура газа @Model.T <br />на высоте @Model.Ycoordinate <br /> Разность температур @Model.rasnost
     </div>
+} *@ 
+
+@{
+    ViewData["Title"] = "Calculator";
 }
+
+@if (Model?.Results != null && Model.Results.Any())
+{
+    <div>
+        <label class="form-label">Результаты:</label>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Высота, м</th>
+                    <th>Температура материала, °C</th>
+                    <th>Температура газа, °C</th>
+                    <th>Разность температур, °C</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var result in Model.Results)
+                {
+                    <tr>
+                        <td>@result.Ycoordinate</td>
+                        <td>@result.TemperatureMaterial</td>
+                        <td>@result.TemperatureGas</td>
+                        <td>@result.TemperatureDifference</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
 
  
 <div class="text-center">
@@ -64,10 +97,10 @@
                     <label for="diametrapparata" class="form-label">Диаметр аппарата, м</label>
                     <input type="text" name="model.diametrapparata" class="form-control" id="diametrapparata" rows="1" value="@Model.Diametrapparata" />
                 </div>
-                <div class="mb-3">
+                @* <div class="mb-3">
                     <label for="ycoordinate" class="form-label">На высоте, м</label>
                     <input type="text" name="model.ycoordinate" class="form-control" id="ycoordinate" rows="1" value="@Model.Ycoordinate" />
-                </div>
+                </div> *@
                 <button class="btn btn-primary">Рассчитать</button>
             </div>
         </div>

@@ -25,7 +25,6 @@ namespace WebTeploobmenApp.Migrations
                     Teploemmaterial = table.Column<double>(type: "REAL", nullable: false),
                     Kofteplo = table.Column<double>(type: "REAL", nullable: false),
                     Diametrapparata = table.Column<double>(type: "REAL", nullable: false),
-                    Ycoordinate = table.Column<double>(type: "REAL", nullable: false),
                     OperationType = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
