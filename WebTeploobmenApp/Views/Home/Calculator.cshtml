@@ -50,7 +50,7 @@
         <!-- Сетка для формы -->
         <div class="row">
             <!-- Левый столбец -->
-            <div class="col-md-6 mb-4">
+            <div class="col-md-4 mb-4">
                 <div class="mb-3">
                     <label for="visotasloy" class="form-label">Высота слоя, м</label>
                     <input type="text" name="Visotasloy" class="form-control" id="visotasloy" value="@Model.Visotasloy" />
@@ -63,6 +63,10 @@
                     <label for="nachtempgas" class="form-label">Начальная температура газа, °C</label>
                     <input type="text" name="Nachtempgas" class="form-control" id="nachtempgas" value="@Model.Nachtempgas" />
                 </div>
+            </div>
+
+            <!-- Средний столбец -->
+            <div class="col-md-4 mb-4">
                 <div class="mb-3">
                     <label for="skorostgas" class="form-label">Скорость газа на свободное сечение шихты, м/с</label>
                     <input type="text" name="Skorostgas" class="form-control" id="skorostgas" value="@Model.Skorostgas" />
@@ -71,14 +75,15 @@
                     <label for="diametrapparata" class="form-label">Диаметр аппарата, м</label>
                     <input type="text" name="Diametrapparata" class="form-control" id="diametrapparata" value="@Model.Diametrapparata" />
                 </div>
-            </div>
-
-            <!-- Правый столбец -->
-            <div class="col-md-6 mb-4">
                 <div class="mb-3">
                     <label for="sredtemplogas" class="form-label">Средняя теплоемкость газа, кДж/(м3 • К)</label>
                     <input type="text" name="Sredtemplogas" class="form-control" id="sredtemplogas" value="@Model.Sredtemplogas" />
                 </div>
+            </div>
+
+            <!-- Правый столбец -->
+            <div class="col-md-4 mb-4">
+                
                 <div class="mb-3">
                     <label for="rashodmaterial" class="form-label">Расход материалов</label>
                     <input type="text" name="Rashodmaterial" class="form-control" id="rashodmaterial" value="@Model.Rashodmaterial" />
@@ -91,9 +96,7 @@
                     <label for="kofteplo" class="form-label">Объемный коэффициент теплоотдачи, Вт/(м3 • К)</label>
                     <input type="text" name="Kofteplo" class="form-control" id="kofteplo" value="@Model.Kofteplo" />
                 </div>
-                
             </div>
-
         </div>
 
         <!-- Кнопки управления -->
@@ -108,13 +111,14 @@
     .form-label {
         font-weight: bold;
         text-align: left; /* Устанавливает выравнивание по левому краю */
-        display: block; 
+        display: block;
+    }
 
     .form-control {
         width: 100%; /* Обеспечивает одинаковую ширину для всех полей ввода */
     }
 
-    .col-md-6 {
+    .col-md-4 {
         max-width: 100%; /* Обеспечивает выравнивание столбцов */
     }
 
@@ -124,6 +128,6 @@
     }
 
     .container {
-        max-width: 1200px; /* Устанавливает максимальную ширину контейнера */
+        max-width: 1280px; /* Устанавливает максимальную ширину контейнера */
     }
 </style>
