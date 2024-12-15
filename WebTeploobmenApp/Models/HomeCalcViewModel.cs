@@ -24,15 +24,15 @@
 
         public double?  Ycoordinate { get; set; }
 
-        public int OperationType { get; set; }
-        public string OperationTypeName => OperationType switch
-        {
-            1 => "Изменение температуры материала",
-            2 => "Измененеие температуры газа",
-            3 => "Разность температур",
-            4 => "Таблица",
-            _ => ""
-        };
+        //public int OperationType { get; set; }
+        //public string OperationTypeName => OperationType switch
+        //{
+        //    1 => "Изменение температуры материала",
+        //    2 => "Измененеие температуры газа",
+        //    3 => "Разность температур",
+        //    4 => "Таблица",
+        //    _ => ""
+        //};
         //public double? Result {  get; set; }
 
         //public double? Ploshadechen { get; set; }

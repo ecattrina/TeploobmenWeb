@@ -1,18 +1,9 @@
 ﻿@model HomeCalcViewModel
-@* @{
-    ViewData["Title"] = "Home Page";
-}
- @if (Model != null )
-{
-     <div>
-        <label class=" form-label">" Результат"</label> <br />
-        Температура материала: @Model.t <br /> Температура газа @Model.T <br />на высоте @Model.Ycoordinate <br /> Разность температур @Model.rasnost
-    </div>
-} *@ 
 
 @{
     ViewData["Title"] = "Calculator";
 }
+
 @if (Model?.Results != null && Model.Results.Any())
 {
     <div>
@@ -54,94 +45,85 @@
     </div>
 }
 
-
-
-
-
-
- 
-<div class="text-center">
-    <form action="/home/calculator" method="post">
-        <div class="d-flex flex-wrap justify-content-center">
-            <!-- Первый столбец -->
-            <div class="col-6 p-2">
+<div class="container mt-4">
+    <form asp-action="Calculator" method="post">
+        <!-- Сетка для формы -->
+        <div class="row">
+            <!-- Левый столбец -->
+            <div class="col-md-6 mb-4">
                 <div class="mb-3">
                     <label for="visotasloy" class="form-label">Высота слоя, м</label>
-                    <input type="text" name="model.visotasloy" class="form-control" id="visotasloy" rows="1" value="@Model.Visotasloy" />
+                    <input type="text" name="Visotasloy" class="form-control" id="visotasloy" value="@Model.Visotasloy" />
                 </div>
                 <div class="mb-3">
                     <label for="nachtempmaterial" class="form-label">Начальная температура материала, °C</label>
-                    <input type="text" name="model.nachtempmaterial" class="form-control" id="nachtempmaterial" rows="1" value="@Model.Nachtempmaterial" />
+                    <input type="text" name="Nachtempmaterial" class="form-control" id="nachtempmaterial" value="@Model.Nachtempmaterial" />
                 </div>
                 <div class="mb-3">
                     <label for="nachtempgas" class="form-label">Начальная температура газа, °C</label>
-                    <input type="text" name="model.nachtempgas" class="form-control" id="nachtempgas" rows="1" value="@Model.Nachtempgas" />
+                    <input type="text" name="Nachtempgas" class="form-control" id="nachtempgas" value="@Model.Nachtempgas" />
                 </div>
                 <div class="mb-3">
                     <label for="skorostgas" class="form-label">Скорость газа на свободное сечение шихты, м/с</label>
-                    <input type="text" name="model.skorostgas" class="form-control" rows="1" id="skorostgas" value="@Model.Skorostgas" />
-                </div>
-                <div class="mb-3">
-                    <label for="sredtemplogas" class="form-label">Средняя теплоемкость газа, кДж/(м3 • К)</label>
-                    <input type="text" name="model.sredtemplogas" class="form-control" id="sredtemplogas" rows="1" value="@Model.Sredtemplogas" />
-                </div>
-                <div class="mb-3">
-                    <select name="model.operationType" class="form-select">
-                        <option value="1">Температура материала</option>
-                        <option value="2">Температура газа</option>
-                        <option value="3">Разность температур</option>
-                        <option value="4">Все данные</option>
-                    </select>
-                </div>
-
-            </div>
-            <!-- Второй столбец -->
-           <div class="col-6 p-2">
-                <div class="mb-3">
-                    <label for="rashodmaterial" class="form-label">Расход материалов</label>
-                    <input type="text" name="model.rashodmaterial" class="form-control" id="rashodmaterial" rows="1" value="@Model.Rashodmaterial" />
-                </div>
-                <div class="mb-3">
-                    <label for="teploemmaterial" class="form-label">Теплоемкость материалов, кДж/(кг • К)</label>
-                    <input type="text" name="model.teploemmaterial" class="form-control" id="teploemmaterial" rows="1" value="@Model.Teploemmaterial" />
-                </div>
-                <div class="mb-3">
-                    <label for="kofteplo" class="form-label">Объемный коэффициент теплоотдачи, Вт/(м3 • К)</label>
-                    <input type="text" name="model.kofteplo" id="kofteplo" class="form-control" rows="1" value="@Model.Kofteplo" />
+                    <input type="text" name="Skorostgas" class="form-control" id="skorostgas" value="@Model.Skorostgas" />
                 </div>
                 <div class="mb-3">
                     <label for="diametrapparata" class="form-label">Диаметр аппарата, м</label>
-                    <input type="text" name="model.diametrapparata" class="form-control" id="diametrapparata" rows="1" value="@Model.Diametrapparata" />
+                    <input type="text" name="Diametrapparata" class="form-control" id="diametrapparata" value="@Model.Diametrapparata" />
                 </div>
-                @* <div class="mb-3">
-                    <label for="ycoordinate" class="form-label">На высоте, м</label>
-                    <input type="text" name="model.ycoordinate" class="form-control" id="ycoordinate" rows="1" value="@Model.Ycoordinate" />
-                </div> *@
-                <button class="btn btn-primary">Рассчитать</button>
             </div>
-        </div>
-      
-        <div class="d-flex flex-wrap justify-content-center">
+
+            <!-- Правый столбец -->
+            <div class="col-md-6 mb-4">
+                <div class="mb-3">
+                    <label for="sredtemplogas" class="form-label">Средняя теплоемкость газа, кДж/(м3 • К)</label>
+                    <input type="text" name="Sredtemplogas" class="form-control" id="sredtemplogas" value="@Model.Sredtemplogas" />
+                </div>
+                <div class="mb-3">
+                    <label for="rashodmaterial" class="form-label">Расход материалов</label>
+                    <input type="text" name="Rashodmaterial" class="form-control" id="rashodmaterial" value="@Model.Rashodmaterial" />
+                </div>
+                <div class="mb-3">
+                    <label for="teploemmaterial" class="form-label">Теплоемкость материалов, кДж/(кг • К)</label>
+                    <input type="text" name="Teploemmaterial" class="form-control" id="teploemmaterial" value="@Model.Teploemmaterial" />
+                </div>
+                <div class="mb-3">
+                    <label for="kofteplo" class="form-label">Объемный коэффициент теплоотдачи, Вт/(м3 • К)</label>
+                    <input type="text" name="Kofteplo" class="form-control" id="kofteplo" value="@Model.Kofteplo" />
+                </div>
+                
+            </div>
 
         </div>
-       
-       
-       
+
+        <!-- Кнопки управления -->
+        <div class="text-center mt-4">
+            <button class="btn btn-primary" name="action" value="add">Добавить</button>
+            <button class="btn btn-secondary" name="action" value="show" style="margin-left: 10px;">Показать</button>
+        </div>
     </form>
 </div>
 
 <style>
-   .form-label {
-    font-weight: bold;
-    text-align: left; /* Устанавливает выравнивание по левому краю */
-    display: block;   /* Убедитесь, что label занимает всю строку */
-}
+    .form-label {
+        font-weight: bold;
+        text-align: left; /* Устанавливает выравнивание по левому краю */
+        display: block; 
 
-    .form-control, .form-select, button {
-        width: 100%;
+    .form-control {
+        width: 100%; /* Обеспечивает одинаковую ширину для всех полей ввода */
     }
 
-    .col-6 {
-        max-width: 50%;
+    .col-md-6 {
+        max-width: 100%; /* Обеспечивает выравнивание столбцов */
+    }
+
+    .btn {
+        padding: 10px 20px; /* Увеличивает высоту кнопок */
+        font-size: 16px; /* Увеличивает размер шрифта */
+    }
+
+    .container {
+        max-width: 1200px; /* Устанавливает максимальную ширину контейнера */
     }
 </style>

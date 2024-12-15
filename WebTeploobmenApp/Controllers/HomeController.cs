@@ -167,18 +167,45 @@ namespace WebTeploobmenApp.Controllers
             return View(viewModel);
         }
 
+        //[HttpPost]
+        //public IActionResult Calculator(CalcModel model)
+        //{
+        //    var results = model.CalculateResults();
+
+        //    var viewModel = new HomeCalcViewModel
+        //    {
+        //        Results = results
+        //    };
+
+        //    _context.DataInput.Add(new InputData
+        //    {
+        //        Visotasloy = model.Visotasloy,
+        //        Nachtempgas = model.Nachtempgas,
+        //        Nachtempmaterial = model.Nachtempmaterial,
+        //        Skorostgas = model.Skorostgas,
+        //        Sredtemplogas = model.Sredtemplogas,
+        //        Rashodmaterial = model.Rashodmaterial,
+        //        Teploemmaterial = model.Teploemmaterial,
+        //        Kofteplo = model.Kofteplo,
+        //        Diametrapparata = model.Diametrapparata,
+        //        //OperationType = model.OperationType
+        //    });
+
+        //    _context.SaveChanges();
+
+        //    return View(viewModel);
+        //}
+
         [HttpPost]
-        public IActionResult Calculator(CalcModel model)
+        public IActionResult Calculator(CalcModel model, string action)
         {
+            // Рассчитать результаты
             var results = model.CalculateResults();
 
+            // Подготовка ViewModel
             var viewModel = new HomeCalcViewModel
             {
-                Results = results
-            };
-
-            _context.DataInput.Add(new InputData
-            {
+                Results = results,
                 Visotasloy = model.Visotasloy,
                 Nachtempgas = model.Nachtempgas,
                 Nachtempmaterial = model.Nachtempmaterial,
@@ -187,14 +214,34 @@ namespace WebTeploobmenApp.Controllers
                 Rashodmaterial = model.Rashodmaterial,
                 Teploemmaterial = model.Teploemmaterial,
                 Kofteplo = model.Kofteplo,
-                Diametrapparata = model.Diametrapparata,
-                OperationType = model.OperationType
-            });
+                Diametrapparata = model.Diametrapparata
+            };
 
-            _context.SaveChanges();
+            // Проверка действия (какая кнопка была нажата)
+            if (action == "add")
+            {
+                // Сохранить данные в базе данных
+                _context.DataInput.Add(new InputData
+                {
+                    Visotasloy = model.Visotasloy,
+                    Nachtempgas = model.Nachtempgas,
+                    Nachtempmaterial = model.Nachtempmaterial,
+                    Skorostgas = model.Skorostgas,
+                    Sredtemplogas = model.Sredtemplogas,
+                    Rashodmaterial = model.Rashodmaterial,
+                    Teploemmaterial = model.Teploemmaterial,
+                    Kofteplo = model.Kofteplo,
+                    Diametrapparata = model.Diametrapparata
+                });
 
+                _context.SaveChanges(); // Сохраняем только при нажатии "Добавить"
+            }
+
+            // Вернуть ту же ViewModel для отображения таблицы
             return View(viewModel);
         }
+
+
 
         public IActionResult Privacy()
         {
