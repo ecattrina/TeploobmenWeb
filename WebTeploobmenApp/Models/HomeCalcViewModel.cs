@@ -24,33 +24,5 @@
 
         public double?  Ycoordinate { get; set; }
 
-        //public int OperationType { get; set; }
-        //public string OperationTypeName => OperationType switch
-        //{
-        //    1 => "Изменение температуры материала",
-        //    2 => "Измененеие температуры газа",
-        //    3 => "Разность температур",
-        //    4 => "Таблица",
-        //    _ => ""
-        //};
-        //public double? Result {  get; set; }
-
-        //public double? Ploshadechen { get; set; }
-        //public double? TeploemMaterial { get; set; }
-        //public double? TeploemGas { get; set; }
-        //public double? OtnoshTeploem { get; set; }
-        //public double? PolnayaOtnositVisota { get; set; }
-
-
-        //public double? theta {  get; set; }
-
-        //public double? upsilon {  get; set; }
-
-        //public double? t {  get; set; }
-        //public double? T {  get; set; }
-
-        //public double? mexp1 { get; set; }
-
-        //public double? rasnost {  get; set; }
             }
 }

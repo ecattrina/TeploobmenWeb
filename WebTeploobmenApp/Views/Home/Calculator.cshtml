@@ -42,6 +42,120 @@
                 </tr>
             </tbody>
         </table>
+        <div id="charts" class="mt-4">
+            <h3>Графики:</h3>
+            <div class="row">
+                <!-- Первый график -->
+                <div class="col-md-6">
+                    <canvas id="temperatureCombinedChart"></canvas>
+                </div>
+
+                <!-- Второй график -->
+                <div class="col-md-6">
+                    <canvas id="temperatureDifferenceChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            // Данные для графиков
+            const yCoordinates = @Html.Raw(Json.Serialize(Model.Results.Select(r => r.Ycoordinate)));
+            const temperatureGas = @Html.Raw(Json.Serialize(Model.Results.Select(r => r.TemperatureGas)));
+            const temperatureMaterial = @Html.Raw(Json.Serialize(Model.Results.Select(r => r.TemperatureMaterial)));
+            const temperatureDifference = @Html.Raw(Json.Serialize(Model.Results.Select(r => r.TemperatureDifference)));
+
+            // Первый график: Температура газа и материала
+            new Chart(document.getElementById('temperatureCombinedChart').getContext('2d'), {
+                type: 'line',
+                data: {
+                    labels: yCoordinates,
+                    datasets: [
+                        {
+                            label: 'Температура газа, °C',
+                            data: temperatureGas,
+                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            borderWidth: 2,
+                            fill: false,
+                        },
+                        {
+                            label: 'Температура материала, °C',
+                            data: temperatureMaterial,
+                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 2,
+                            fill: false,
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: true,
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Высота слоя (м)',
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Температура (°C)',
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Второй график: Разность температур
+            new Chart(document.getElementById('temperatureDifferenceChart').getContext('2d'), {
+                type: 'line',
+                data: {
+                    labels: yCoordinates,
+                    datasets: [
+                        {
+                            label: 'Разность температур, °C',
+                            data: temperatureDifference,
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 2,
+                            fill: false,
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: true,
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Высота слоя (м)',
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Температура (°C)',
+                            }
+                        }
+                    }
+                }
+            });
+        </script>
+
+
+
     </div>
 }
 
@@ -110,24 +224,35 @@
 <style>
     .form-label {
         font-weight: bold;
-        text-align: left; /* Устанавливает выравнивание по левому краю */
+        text-align: left; 
         display: block;
     }
 
     .form-control {
-        width: 100%; /* Обеспечивает одинаковую ширину для всех полей ввода */
+        width: 100%; 
     }
 
     .col-md-4 {
-        max-width: 100%; /* Обеспечивает выравнивание столбцов */
+        max-width: 100%; 
     }
 
     .btn {
-        padding: 10px 20px; /* Увеличивает высоту кнопок */
-        font-size: 16px; /* Увеличивает размер шрифта */
-    }
+        padding: 10px 20px; 
+        font-size: 16px; 
 
     .container {
-        max-width: 1280px; /* Устанавливает максимальную ширину контейнера */
+        max-width: 1280px;
     }
 </style>
+
+<script>
+    // Функция для замены точки на запятую
+    function replaceDotWithComma(event) {
+        event.target.value = event.target.value.replace('.', ',');
+    }
+
+    // Применяем обработчик ко всем полям с числовыми значениями
+    document.querySelectorAll('input[type="text"]').forEach(function (input) {
+        input.addEventListener('input', replaceDotWithComma);
+    });
+</script>

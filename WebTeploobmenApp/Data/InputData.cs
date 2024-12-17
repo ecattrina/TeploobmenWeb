@@ -8,6 +8,8 @@ namespace WebTeploobmenApp.Data
 
         public int Id { get; set; }
 
+        public int? UserId { get; set; }
+
         public double Visotasloy { get; set; }
 
         public double Nachtempgas { get; set; }
@@ -30,6 +32,7 @@ namespace WebTeploobmenApp.Data
 
         public int OperationType { get; set; }
 
+        
 
     }
 }

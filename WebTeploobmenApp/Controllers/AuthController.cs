@@ -28,7 +28,9 @@ namespace WebTeploobmenApp.Controllers
         {
             var user = _context.Users.FirstOrDefault(u => u.Login == login && u.Password == password);
             if (user != null) {
-                var claims = new List<Claim> { new Claim(ClaimTypes.Name,login) };
+                var claims = new List<Claim> { 
+                    new("UserId", user.Id.ToString()),
+                    new Claim(ClaimTypes.Name,login) };
                 // создаем объект ClaimsIdentity
                 ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, "Cookies");
                 // установка аутентификационных куки
